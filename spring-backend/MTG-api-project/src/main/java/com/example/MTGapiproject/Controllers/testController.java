@@ -31,12 +31,12 @@ public class testController {
         return String.format("Hello %s, you are %d years old", name, age);
     }
 
-    @GetMapping(value = "/*")
+    @GetMapping
     public List<testEntity> all() {
         return this.service.all();
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{id}") //  Simply put, the @PathVariable annotation can be used to handle template variables in the request URI mapping, and set them as method parameters.
     public testEntity findById (@PathVariable Long id) {
         return this.service.findById(id);
     }
@@ -45,4 +45,6 @@ public class testController {
     public void save(@Valid @RequestBody testCreatePayload test) {
         this.service.create(test);
     }
+
+
 }
